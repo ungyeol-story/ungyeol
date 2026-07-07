@@ -4,351 +4,121 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>운결 | 공식 홈페이지</title>
-  <meta name="description" content="운결은 픽로그에서 운영하는 온라인 명리학 사주 분석 브랜드입니다. 사주팔자, 연애운, 재물운, 직업운, 궁합 상담을 제공합니다." />
-  <style>
-    :root {
-      --bg: #12100d;
-      --card: #1e1913;
-      --card2: #282117;
-      --text: #f7efe2;
-      --muted: #c9b99d;
-      --gold: #d7ad5f;
-      --gold2: #f3d394;
-      --line: rgba(215, 173, 95, 0.22);
-      --white: #fffaf0;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "Pretendard", "Noto Sans KR", Apple SD Gothic Neo, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(215,173,95,.18), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(148,92,35,.16), transparent 35%),
-        var(--bg);
-      color: var(--text);
-      word-break: keep-all;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(18,16,13,.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav {
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand { display: flex; gap: 10px; align-items: center; font-weight: 800; letter-spacing: -0.02em; }
-    .logo {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold2), var(--gold));
-      display: grid; place-items: center; color: #21170b; font-weight: 900;
-      box-shadow: 0 0 22px rgba(215,173,95,.3);
-    }
-    .menu { display: flex; gap: 20px; font-size: 14px; color: var(--muted); }
-    .menu a:hover { color: var(--gold2); }
-    .hero { padding: 92px 0 66px; text-align: center; }
-    .badge {
-      display: inline-block; padding: 8px 14px; border: 1px solid var(--line);
-      border-radius: 999px; color: var(--gold2); background: rgba(215,173,95,.08);
-      font-size: 14px; margin-bottom: 22px;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(46px, 8vw, 86px);
-      line-height: 1.05;
-      letter-spacing: -0.07em;
-    }
-    .subtitle {
-      max-width: 700px; margin: 24px auto 0;
-      font-size: clamp(18px, 2.8vw, 26px);
-      color: var(--muted);
-      letter-spacing: -0.03em;
-    }
-    .hero-buttons { margin-top: 34px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 50px; padding: 0 22px; border-radius: 14px;
-      font-weight: 800; border: 1px solid var(--line);
-    }
-    .btn.primary { background: linear-gradient(135deg, var(--gold2), var(--gold)); color: #221709; }
-    .btn.ghost { background: rgba(255,250,240,.05); color: var(--white); }
-    .section { padding: 54px 0; }
-    .section-title { margin-bottom: 22px; }
-    .section-title small { color: var(--gold2); font-weight: 800; }
-    .section-title h2 { margin: 6px 0 0; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.05em; }
-    .grid { display: grid; gap: 18px; }
-    .grid.three { grid-template-columns: repeat(3, 1fr); }
-    .grid.two { grid-template-columns: repeat(2, 1fr); }
-    .card {
-      background: linear-gradient(180deg, rgba(255,250,240,.06), rgba(255,250,240,.03));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 18px 55px rgba(0,0,0,.22);
-    }
-    .card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.04em; }
-    .card p { margin: 0; color: var(--muted); }
-    .price { font-size: 30px; font-weight: 900; color: var(--gold2); margin: 12px 0; }
-    .list { padding: 0; margin: 18px 0 0; list-style: none; color: var(--muted); }
-    .list li { margin: 8px 0; }
-    .list li::before { content: "✓ "; color: var(--gold2); font-weight: 900; }
-    .steps { counter-reset: step; }
-    .step { position: relative; padding-left: 56px; }
-    .step::before {
-      counter-increment: step; content: counter(step);
-      position: absolute; left: 0; top: 0;
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--card2); color: var(--gold2);
-      display: grid; place-items: center; font-weight: 900;
-      border: 1px solid var(--line);
-    }
-    .notice {
-      background: rgba(215,173,95,.09);
-      border: 1px solid var(--line);
-      padding: 20px;
-      border-radius: 20px;
-      color: var(--muted);
-    }
-    details {
-      background: rgba(255,250,240,.04);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px 20px;
-    }
-    details + details { margin-top: 12px; }
-    summary { cursor: pointer; font-weight: 800; color: var(--white); }
-    details p { color: var(--muted); margin-bottom: 0; }
-    footer {
-      margin-top: 40px; padding: 34px 0 52px;
-      border-top: 1px solid var(--line);
-      color: var(--muted); font-size: 14px;
-    }
-    .info-table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 18px; }
-    .info-table th, .info-table td { border-bottom: 1px solid var(--line); padding: 14px; text-align: left; }
-    .info-table th { color: var(--gold2); width: 155px; }
-    .fixed-kakao {
-      position: fixed; right: 18px; bottom: 18px; z-index: 20;
-      background: #fee500; color: #191600;
-      border-radius: 999px; padding: 14px 18px;
-      font-weight: 900; box-shadow: 0 12px 30px rgba(0,0,0,.35);
-    }
-    .legal-box {
-      max-height: 220px; overflow: auto; padding-right: 8px;
-      color: var(--muted); font-size: 14px;
-    }
-    @media (max-width: 780px) {
-      .menu { display: none; }
-      .hero { padding: 72px 0 44px; }
-      .grid.three, .grid.two { grid-template-columns: 1fr; }
-      .card { padding: 22px; }
-      .fixed-kakao { left: 16px; right: 16px; text-align: center; justify-content: center; }
-      footer { padding-bottom: 90px; }
-    }
-  </style>
+  <meta name="description" content="운결은 픽로그에서 운영하는 온라인 명리학 사주 분석 브랜드입니다." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top"><span class="logo">運</span><span>운결</span></a>
-      <nav class="menu">
-        <a href="#about">소개</a>
-        <a href="#service">상품</a>
-        <a href="#process">절차</a>
-        <a href="#faq">FAQ</a>
-        <a href="#business">사업자정보</a>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="container nav">
+    <a href="#top" class="brand"><span class="brand-mark">運</span><span>운결</span></a>
+    <nav class="nav-menu">
+      <a href="#about">소개</a><a href="#service">상품</a><a href="#sample">샘플</a><a href="#process">절차</a><a href="#faq">FAQ</a><a href="#business">사업자정보</a>
+    </nav>
+  </div>
+</header>
 
-  <main id="top">
-    <section class="hero wrap">
-      <div class="badge">픽로그에서 운영하는 온라인 명리학 브랜드</div>
+<main id="top">
+  <section class="hero">
+    <div class="orb orb-one"></div><div class="orb orb-two"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow">온라인 명리학 브랜드 <span>운영사업자 : 픽로그</span></p>
+      <div class="hero-symbol">運</div>
       <h1>운결</h1>
-      <p class="subtitle">사주가 알려주는 흐름을 바탕으로, 지금의 고민과 앞으로의 방향을 차분하게 정리해드립니다.</p>
-      <div class="hero-buttons">
-        <a class="btn primary" href="#contact">상담 신청 안내</a>
-        <a class="btn ghost" href="#service">상품 보기</a>
+      <p class="hero-copy">오늘의 운보다<br />인생의 흐름을 읽습니다.</p>
+      <p class="hero-subcopy">명리학을 바탕으로 지금의 고민과 앞으로의 방향을 차분하게 살펴드립니다.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">카카오 상담하기</a>
+        <a href="#service" class="btn btn-secondary">분석 상품 보기</a>
       </div>
-    </section>
-
-    <section class="section wrap" id="about">
-      <div class="section-title">
-        <small>ABOUT</small>
-        <h2>운결 소개</h2>
-      </div>
-      <div class="card">
-        <h3>운결은 삶의 흐름을 읽고 방향을 제안합니다.</h3>
-        <p>
-          운결은 명리학을 바탕으로 개인의 사주 구조와 운의 흐름을 분석하여
-          연애, 재물, 직업, 관계, 궁합 등 현실적인 고민을 이해하기 쉽게 풀어드리는 온라인 사주 분석 서비스입니다.
-        </p>
-      </div>
-    </section>
-
-    <section class="section wrap">
-      <div class="grid three">
-        <div class="card"><h3>사주팔자</h3><p>타고난 기질, 성향, 강점과 약점을 중심으로 분석합니다.</p></div>
-        <div class="card"><h3>연애운</h3><p>관계의 흐름, 인연의 특징, 연애에서 반복되는 패턴을 살펴봅니다.</p></div>
-        <div class="card"><h3>재물운</h3><p>돈의 흐름, 재물 성향, 수입과 지출의 방향성을 정리합니다.</p></div>
-        <div class="card"><h3>직업운</h3><p>일의 성향, 잘 맞는 환경, 커리어 흐름을 분석합니다.</p></div>
-        <div class="card"><h3>궁합</h3><p>두 사람의 성향 차이와 관계의 조화를 살펴봅니다.</p></div>
-        <div class="card"><h3>PDF 분석지</h3><p>분석 결과는 보기 쉽게 정리된 PDF 형태로 전달됩니다.</p></div>
-      </div>
-    </section>
-
-    <section class="section wrap" id="service">
-      <div class="section-title">
-        <small>SERVICE</small>
-        <h2>상품 소개</h2>
-      </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>기본 사주팔자 분석</h3>
-          <div class="price">9,900원</div>
-          <p>처음 사주 분석을 받아보는 분께 적합한 핵심 요약형 분석입니다.</p>
-          <ul class="list">
-            <li>기본 사주 구조</li>
-            <li>성격과 기질</li>
-            <li>강점과 주의점</li>
-            <li>PDF 제공</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>프리미엄 종합 분석</h3>
-          <div class="price">29,800원</div>
-          <p>연애, 재물, 직업, 대운·세운까지 폭넓게 살펴보는 종합 분석입니다.</p>
-          <ul class="list">
-            <li>사주팔자 종합 분석</li>
-            <li>연애운·재물운·직업운</li>
-            <li>대운과 세운 흐름</li>
-            <li>PDF 분석지 제공</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section wrap" id="process">
-      <div class="section-title">
-        <small>PROCESS</small>
-        <h2>상담 진행 절차</h2>
-      </div>
-      <div class="grid two steps">
-        <div class="card step"><h3>상담 신청</h3><p>원하시는 분석 상품을 선택하고 상담을 신청합니다.</p></div>
-        <div class="card step"><h3>정보 입력</h3><p>생년월일, 태어난 시간, 성별 등 분석에 필요한 정보를 전달합니다.</p></div>
-        <div class="card step"><h3>분석 진행</h3><p>명리학 기준에 따라 사주 구조와 운의 흐름을 분석합니다.</p></div>
-        <div class="card step"><h3>PDF 발송</h3><p>완성된 분석지는 PDF 형태로 전달됩니다.</p></div>
-      </div>
-    </section>
-
-    <section class="section wrap">
-      <div class="section-title">
-        <small>SAMPLE</small>
-        <h2>분석지 미리보기</h2>
-      </div>
-      <div class="notice">
-        사주 분석지 샘플은 준비 중입니다. 추후 실제 PDF 샘플 또는 이미지 미리보기를 이 영역에 추가할 예정입니다.
-      </div>
-    </section>
-
-    <section class="section wrap" id="faq">
-      <div class="section-title">
-        <small>FAQ</small>
-        <h2>자주 묻는 질문</h2>
-      </div>
-      <details open>
-        <summary>분석지는 언제 받을 수 있나요?</summary>
-        <p>상담량에 따라 달라질 수 있으나, 일반적으로 접수 후 순차적으로 발송됩니다.</p>
-      </details>
-      <details>
-        <summary>태어난 시간을 몰라도 신청할 수 있나요?</summary>
-        <p>가능합니다. 다만 태어난 시간이 있을 때보다 세부 분석의 정확도는 제한될 수 있습니다.</p>
-      </details>
-      <details>
-        <summary>상담은 어떻게 진행되나요?</summary>
-        <p>비대면으로 진행되며, 필요한 정보를 전달받은 후 PDF 분석지 형태로 제공됩니다.</p>
-      </details>
-      <details>
-        <summary>환불이 가능한가요?</summary>
-        <p>분석 작업 시작 전에는 환불이 가능하며, 분석이 시작되거나 결과물이 발송된 이후에는 상품 특성상 환불이 제한될 수 있습니다.</p>
-      </details>
-    </section>
-
-    <section class="section wrap" id="contact">
-      <div class="section-title">
-        <small>CONTACT</small>
-        <h2>상담 신청 안내</h2>
-      </div>
-      <div class="card">
-        <h3>상담은 카카오채널 또는 안내된 문의처를 통해 신청하실 수 있습니다.</h3>
-        <p>카카오채널 링크는 인증 완료 후 연결 예정입니다. 현재는 문의처 정보를 준비 중입니다.</p>
-        <ul class="list">
-          <li>카카오채널: 운결</li>
-          <li>문의: 입력 예정</li>
-          <li>운영시간: 입력 예정</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section wrap" id="business">
-      <div class="section-title">
-        <small>BUSINESS</small>
-        <h2>사업자 정보</h2>
-      </div>
-      <div class="card">
-        <table class="info-table">
-          <tr><th>브랜드명</th><td>운결</td></tr>
-          <tr><th>운영사업자</th><td>픽로그</td></tr>
-          <tr><th>대표자</th><td>입력 예정</td></tr>
-          <tr><th>사업자등록번호</th><td>입력 예정</td></tr>
-          <tr><th>문의</th><td>입력 예정</td></tr>
-        </table>
-      </div>
-    </section>
-
-    <section class="section wrap" id="policy">
-      <div class="section-title">
-        <small>POLICY</small>
-        <h2>개인정보처리방침 · 이용약관 · 환불정책</h2>
-      </div>
-      <div class="grid three">
-        <div class="card">
-          <h3>개인정보처리방침</h3>
-          <div class="legal-box">
-            운결은 상담 신청 및 분석 진행을 위해 이름, 연락처, 생년월일, 태어난 시간 등 필요한 정보를 수집할 수 있습니다. 수집된 정보는 상담 제공 목적 외로 사용하지 않으며, 관련 법령에 따라 안전하게 관리합니다.
-          </div>
-        </div>
-        <div class="card">
-          <h3>이용약관</h3>
-          <div class="legal-box">
-            운결의 사주 분석 서비스는 명리학을 기반으로 한 참고용 콘텐츠입니다. 분석 결과는 개인의 선택과 판단을 돕기 위한 자료이며, 법률·의료·투자 등 전문 자문을 대체하지 않습니다.
-          </div>
-        </div>
-        <div class="card">
-          <h3>환불정책</h3>
-          <div class="legal-box">
-            결제 후 분석 작업 시작 전에는 환불이 가능합니다. 분석이 시작되었거나 PDF 결과물이 발송된 이후에는 디지털 콘텐츠 특성상 환불이 제한될 수 있습니다.
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <a class="fixed-kakao" href="#contact">상담 신청하기</a>
-
-  <footer>
-    <div class="wrap">
-      <strong>운결</strong><br />
-      운결은 픽로그에서 운영하는 온라인 명리학 사주 분석 브랜드입니다.<br />
-      브랜드명: 운결 | 운영사업자: 픽로그 | 사업자등록번호: 입력 예정<br />
-      © 운결. All rights reserved.
+      <div class="trust-row"><span>비대면 PDF 분석</span><span>명리학 기반</span><span>운영사업자 명시</span></div>
     </div>
-  </footer>
+  </section>
+
+  <section class="section container" id="about">
+    <div class="section-head"><span>ABOUT</span><h2>운결 소개</h2></div>
+    <div class="story-card">
+      <h3>운결은 운을 맞히는 곳이 아니라, 삶의 흐름을 이해하는 공간입니다.</h3>
+      <p>사주는 정답을 대신 정해주는 것이 아니라, 나의 성향과 흐름을 이해하고 더 나은 선택을 고민하게 만드는 하나의 지도에 가깝습니다. 운결은 명리학을 바탕으로 연애, 재물, 직업, 관계, 궁합 등 현실적인 고민을 이해하기 쉬운 PDF 분석지로 정리해드립니다.</p>
+    </div>
+  </section>
+
+  <section class="section container" id="service">
+    <div class="section-head"><span>SERVICE</span><h2>분석 상품</h2><p>처음 받아보는 분도 이해하기 쉽도록 핵심을 정리해드립니다.</p></div>
+    <div class="product-grid">
+      <article class="product-card">
+        <div class="product-visual"><div class="mock-cover"><span>運結</span><strong>기본 사주 분석</strong><em>PDF Report</em></div></div>
+        <div class="product-body"><h3>기본 사주팔자 분석</h3><p class="price">9,900원</p><p>나의 성향, 기질, 강점과 주의점을 중심으로 정리하는 핵심 분석입니다.</p><ul><li>기본 사주 구조</li><li>성격과 기질</li><li>강점과 주의점</li><li>PDF 제공</li></ul></div>
+      </article>
+      <article class="product-card featured">
+        <div class="product-visual"><div class="mock-cover premium"><span>運結</span><strong>프리미엄 종합 분석</strong><em>100p PDF Report</em></div></div>
+        <div class="product-body"><h3>프리미엄 종합 분석</h3><p class="price">29,800원</p><p>연애, 재물, 직업, 대운·세운 흐름까지 폭넓게 살펴보는 종합 분석입니다.</p><ul><li>사주팔자 종합 분석</li><li>연애운·재물운·직업운</li><li>대운과 세운 흐름</li><li>PDF 분석지 제공</li></ul></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container" id="sample">
+    <div class="section-head"><span>SAMPLE</span><h2>분석지 미리보기</h2><p>실제 분석지 이미지가 준비되면 이 영역에 바로 교체할 수 있습니다.</p></div>
+    <div class="sample-grid">
+      <div class="sample-card"><div class="sample-page">표지<br />이미지 준비중</div><h3>분석지 표지</h3><p>운결 브랜드 이미지와 상품별 표지를 넣을 예정입니다.</p></div>
+      <div class="sample-card"><div class="sample-page">목차<br />이미지 준비중</div><h3>목차 미리보기</h3><p>고객이 어떤 내용을 받는지 한눈에 볼 수 있도록 구성합니다.</p></div>
+      <div class="sample-card"><div class="sample-page">본문<br />이미지 준비중</div><h3>분석 본문</h3><p>실제 PDF 일부를 샘플로 보여줄 수 있습니다.</p></div>
+    </div>
+  </section>
+
+  <section class="section container" id="process">
+    <div class="section-head"><span>PROCESS</span><h2>상담 진행 절차</h2></div>
+    <div class="process-grid">
+      <div class="step"><b>01</b><h3>상담 신청</h3><p>카카오채널 또는 안내된 문의처를 통해 신청합니다.</p></div>
+      <div class="step"><b>02</b><h3>정보 전달</h3><p>생년월일, 태어난 시간, 성별 등 분석에 필요한 정보를 전달합니다.</p></div>
+      <div class="step"><b>03</b><h3>분석 진행</h3><p>명리학 기준에 따라 사주 구조와 흐름을 분석합니다.</p></div>
+      <div class="step"><b>04</b><h3>PDF 발송</h3><p>완성된 분석지를 PDF 형태로 전달합니다.</p></div>
+    </div>
+  </section>
+
+  <section class="section container" id="faq">
+    <div class="section-head"><span>FAQ</span><h2>자주 묻는 질문</h2></div>
+    <div class="faq-list">
+      <details open><summary>분석지는 언제 받을 수 있나요?</summary><p>상담 접수 후 순차적으로 진행됩니다. 정확한 발송 일정은 상담 신청 시 안내드립니다.</p></details>
+      <details><summary>태어난 시간을 몰라도 신청할 수 있나요?</summary><p>가능합니다. 다만 태어난 시간이 있을 때보다 세부 분석에는 제한이 있을 수 있습니다.</p></details>
+      <details><summary>결과는 어떤 형태로 받나요?</summary><p>분석 결과는 PDF 분석지 형태로 제공됩니다.</p></details>
+      <details><summary>환불이 가능한가요?</summary><p>분석 작업 시작 전에는 환불이 가능하며, 분석이 시작되거나 결과물이 발송된 이후에는 디지털 콘텐츠 특성상 환불이 제한될 수 있습니다.</p></details>
+    </div>
+  </section>
+
+  <section class="section container" id="contact">
+    <div class="contact-card"><div><span>CONTACT</span><h2>상담 신청 안내</h2><p>상담은 카카오채널 ‘운결’을 통해 순차적으로 안내드립니다.</p></div><a href="#" class="btn btn-primary">카카오채널 준비중</a></div>
+  </section>
+
+  <section class="section container" id="business">
+    <div class="section-head"><span>BUSINESS</span><h2>사업자 정보</h2></div>
+    <div class="business-card"><dl>
+      <div><dt>브랜드명</dt><dd>운결</dd></div>
+      <div><dt>운영사업자</dt><dd>픽로그</dd></div>
+      <div><dt>사업자등록번호</dt><dd>268-23-02108</dd></div>
+      <div><dt>문의</dt><dd>카카오채널 운결</dd></div>
+      <div><dt>운영시간</dt><dd>09:00 ~ 21:00</dd></div>
+    </dl></div>
+  </section>
+
+  <section class="section container policy-preview">
+    <div class="policy-card"><h3>개인정보처리방침</h3><p>상담 신청 및 분석 진행을 위해 필요한 정보만 수집하며, 상담 제공 목적 외로 사용하지 않습니다.</p><a href="privacy.html">자세히 보기</a></div>
+    <div class="policy-card"><h3>이용약관</h3><p>운결의 분석 서비스는 명리학 기반 참고용 콘텐츠이며, 전문 자문을 대체하지 않습니다.</p><a href="terms.html">자세히 보기</a></div>
+    <div class="policy-card"><h3>환불정책</h3><p>분석 작업 시작 전에는 환불이 가능하며, 결과물 발송 이후에는 환불이 제한될 수 있습니다.</p><a href="refund.html">자세히 보기</a></div>
+  </section>
+</main>
+
+<a class="floating-contact" href="#contact">상담 신청하기</a>
+
+<footer class="footer">
+  <div class="container">
+    <strong>운결</strong>
+    <p>오늘의 운보다 인생의 흐름을 읽습니다.</p>
+    <p>브랜드명: 운결 | 운영사업자: 픽로그 | 사업자등록번호: 268-23-02108</p>
+    <p>문의: 카카오채널 운결 | 운영시간: 09:00 ~ 21:00</p>
+    <p>© 운결. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
